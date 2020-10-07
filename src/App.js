@@ -10,13 +10,14 @@ import { CubeProvider } from "@cubejs-client/react";
 import client from "./graphql/client";
 import Header from "./components/Header";
 import WebSocketTransport from "@cubejs-client/ws-transport";
-const API_URL = "http://localhost:4000";
+// const API_URL = "http://localhost:4000";
+const API_URL = "https://temp-takehome-api.staging.kpilens.com";
 const CUBEJS_TOKEN =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1OTUyOTU3NTksImV4cCI6MTU5NTM4MjE1OX0.mXZSbfVGQuYdmWe3HxUB1klbn9Ikljdx1mG8obx7GiU";
 const cubejsApi = cubejs({
   transport: new WebSocketTransport({
     authorization: CUBEJS_TOKEN,
-    apiUrl: API_URL.replace("http", "ws")
+    apiUrl: API_URL.replace("https", "ws")
   })
 });
 

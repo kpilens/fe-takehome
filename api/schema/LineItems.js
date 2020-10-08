@@ -1,9 +1,9 @@
-cube(`Orders`, {
-  sql: `SELECT * FROM public.orders`,
+cube(`LineItems`, {
+  sql: `SELECT * FROM public.line_items`,
   
   joins: {
-    Users: {
-      sql: `${CUBE}.user_id = ${Users}.id`,
+    Orders: {
+      sql: `${CUBE}.order_id = ${Orders}.id`,
       relationship: `belongsTo`
     },
     
@@ -19,8 +19,13 @@ cube(`Orders`, {
       drillMembers: [id, createdAt]
     },
     
-    number: {
-      sql: `number`,
+    quantity: {
+      sql: `quantity`,
+      type: `sum`
+    },
+    
+    price: {
+      sql: `price`,
       type: `sum`
     }
   },
@@ -32,18 +37,8 @@ cube(`Orders`, {
       primaryKey: true
     },
     
-    status: {
-      sql: `status`,
-      type: `string`
-    },
-    
     createdAt: {
       sql: `created_at`,
-      type: `time`
-    },
-    
-    completedAt: {
-      sql: `completed_at`,
       type: `time`
     }
   }

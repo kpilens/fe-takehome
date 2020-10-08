@@ -1,7 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { useCubeQuery } from "@cubejs-client/react";
-import { Spin, Row, Col, Statistic, Table } from "antd";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { useCubeQuery } from '@cubejs-client/react';
+import { Spin, Row, Col, Statistic, Table } from 'antd';
 import {
   CartesianGrid,
   PieChart,
@@ -17,8 +17,8 @@ import {
   BarChart,
   Bar,
   LineChart,
-  Line
-} from "recharts";
+  Line,
+} from 'recharts';
 
 const CartesianChart = ({ resultSet, children, ChartComponent }) => (
   <ResponsiveContainer width="100%" height={350}>
@@ -33,16 +33,16 @@ const CartesianChart = ({ resultSet, children, ChartComponent }) => (
   </ResponsiveContainer>
 );
 
-const colors = ["#FF6492", "#141446", "#7A77FF"];
+const colors = ['#FF6492', '#141446', '#7A77FF'];
 
-const stackedChartData = resultSet => {
+const stackedChartData = (resultSet) => {
   const data = resultSet
     .pivot()
     .map(({ xValues, yValuesArray }) =>
       yValuesArray.map(([yValues, m]) => ({
-        x: resultSet.axisValuesString(xValues, ", "),
-        color: resultSet.axisValuesString(yValues, ", "),
-        measure: m && Number.parseFloat(m)
+        x: resultSet.axisValuesString(xValues, ', '),
+        color: resultSet.axisValuesString(yValues, ', '),
+        measure: m && Number.parseFloat(m),
       }))
     )
     .reduce((a, b) => a.concat(b), []);
@@ -115,11 +115,11 @@ const TypeToChartComponent = {
       justify="center"
       align="middle"
       style={{
-        height: "100%"
+        height: '100%',
       }}
     >
       <Col>
-        {resultSet.seriesNames().map(s => (
+        {resultSet.seriesNames().map((s) => (
           <Statistic value={resultSet.totalRow()[s.key]} />
         ))}
       </Col>
@@ -131,15 +131,15 @@ const TypeToChartComponent = {
       columns={resultSet.tableColumns(pivotConfig)}
       dataSource={resultSet.tablePivot(pivotConfig)}
     />
-  )
+  ),
 };
 const TypeToMemoChartComponent = Object.keys(TypeToChartComponent)
-  .map(key => ({
-    [key]: React.memo(TypeToChartComponent[key])
+  .map((key) => ({
+    [key]: React.memo(TypeToChartComponent[key]),
   }))
   .reduce((a, b) => ({ ...a, ...b }));
 
-const renderChart = Component => ({ resultSet, error, pivotConfig }) =>
+const renderChart = (Component) => ({ resultSet, error, pivotConfig }) =>
   (resultSet && (
     <Component resultSet={resultSet} pivotConfig={pivotConfig} />
   )) ||
@@ -154,10 +154,10 @@ const ChartRenderer = ({ vizState }) => {
 
 ChartRenderer.propTypes = {
   vizState: PropTypes.object,
-  cubejsApi: PropTypes.object
+  cubejsApi: PropTypes.object,
 };
 ChartRenderer.defaultProps = {
   vizState: {},
-  cubejsApi: null
+  cubejsApi: null,
 };
 export default ChartRenderer;

@@ -1,35 +1,35 @@
-import React from "react";
-import * as PropTypes from "prop-types";
-import { Select } from "antd";
-import { Icon } from "@ant-design/compatible";
-import MemberDropdown from "./MemberDropdown";
-import RemoveButtonGroup from "./RemoveButtonGroup";
-import FilterInput from "./FilterInput";
+import React from 'react';
+import * as PropTypes from 'prop-types';
+import { Select } from 'antd';
+import { Icon } from '@ant-design/compatible';
+import MemberDropdown from './MemberDropdown';
+import RemoveButtonGroup from './RemoveButtonGroup';
+import FilterInput from './FilterInput';
 
 const FilterGroup = ({
   members,
   availableMembers,
   addMemberName,
-  updateMethods
+  updateMethods,
 }) => (
   <span>
-    {members.map(m => (
+    {members.map((m) => (
       <div
         style={{
-          marginBottom: 12
+          marginBottom: 12,
         }}
         key={m.index}
       >
         <RemoveButtonGroup onRemoveClick={() => updateMethods.remove(m)}>
           <MemberDropdown
-            onClick={updateWith =>
+            onClick={(updateWith) =>
               updateMethods.update(m, { ...m, dimension: updateWith })
             }
             availableMembers={availableMembers}
             style={{
               width: 150,
-              textOverflow: "ellipsis",
-              overflow: "hidden"
+              textOverflow: 'ellipsis',
+              overflow: 'hidden',
             }}
           >
             {m.dimension.title}
@@ -37,13 +37,13 @@ const FilterGroup = ({
         </RemoveButtonGroup>
         <Select
           value={m.operator}
-          onChange={operator => updateMethods.update(m, { ...m, operator })}
+          onChange={(operator) => updateMethods.update(m, { ...m, operator })}
           style={{
             width: 200,
-            marginRight: 8
+            marginRight: 8,
           }}
         >
-          {m.operators.map(operator => (
+          {m.operators.map((operator) => (
             <Select.Option key={operator.name} value={operator.name}>
               {operator.title}
             </Select.Option>
@@ -57,9 +57,9 @@ const FilterGroup = ({
       </div>
     ))}
     <MemberDropdown
-      onClick={m =>
+      onClick={(m) =>
         updateMethods.add({
-          dimension: m
+          dimension: m,
         })
       }
       availableMembers={availableMembers}
@@ -75,6 +75,6 @@ FilterGroup.propTypes = {
   members: PropTypes.array.isRequired,
   availableMembers: PropTypes.array.isRequired,
   addMemberName: PropTypes.string.isRequired,
-  updateMethods: PropTypes.object.isRequired
+  updateMethods: PropTypes.object.isRequired,
 };
 export default FilterGroup;

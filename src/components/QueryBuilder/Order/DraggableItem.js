@@ -1,14 +1,14 @@
-import React from "react";
-import { Button, Typography } from "antd";
-import { Draggable } from "react-beautiful-dnd";
-import { DragOutlined } from "@ant-design/icons";
-const orderOptions = ["asc", "desc", "none"];
+import React from 'react';
+import { Button, Typography } from 'antd';
+import { Draggable } from 'react-beautiful-dnd';
+import { DragOutlined } from '@ant-design/icons';
+const orderOptions = ['asc', 'desc', 'none'];
 export default function DraggableItem({
   id,
   index,
-  order = "none",
+  order = 'none',
   children,
-  onOrderChange
+  onOrderChange,
 }) {
   const getNextOrder = () => {
     const index = orderOptions.indexOf(order) + 1;
@@ -23,12 +23,12 @@ export default function DraggableItem({
           {...draggableProps}
           {...dragHandleProps}
           style={{
-            display: "flex",
-            flexWrap: "nowrap",
-            justifyContent: "space-between",
-            alignItems: "center",
+            display: 'flex',
+            flexWrap: 'nowrap',
+            justifyContent: 'space-between',
+            alignItems: 'center',
             marginBottom: 8,
-            ...draggableProps.style
+            ...draggableProps.style,
           }}
         >
           <DragOutlined />
@@ -36,18 +36,18 @@ export default function DraggableItem({
           <Typography.Text
             ellipsis
             style={{
-              margin: "0 auto 0 8px"
+              margin: '0 auto 0 8px',
             }}
           >
             {children}
           </Typography.Text>
 
           <Button
-            type={order !== "none" ? "primary" : null}
+            type={order !== 'none' ? 'primary' : null}
             size="small"
             style={{
               minWidth: 70,
-              marginLeft: 8
+              marginLeft: 8,
             }}
             onClick={() => onOrderChange(id, getNextOrder())}
           >

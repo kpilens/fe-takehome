@@ -1,20 +1,20 @@
-import React, { Fragment } from "react";
-import * as PropTypes from "prop-types";
-import { Row, Col, Divider, Card, Popover, Button } from "antd";
-import { SortAscendingOutlined, BorderInnerOutlined } from "@ant-design/icons";
-import { QueryBuilder } from "@cubejs-client/react";
-import ChartRenderer from "../ChartRenderer";
-import MemberGroup from "./MemberGroup";
-import FilterGroup from "./FilterGroup";
-import TimeGroup from "./TimeGroup";
-import SelectChartType from "./SelectChartType";
-import OrderGroup from "./Order/OrderGroup";
-import Pivot from "./Pivot/Pivot";
+import React, { Fragment } from 'react';
+import * as PropTypes from 'prop-types';
+import { Row, Col, Divider, Card, Popover, Button } from 'antd';
+import { SortAscendingOutlined, BorderInnerOutlined } from '@ant-design/icons';
+import { QueryBuilder } from '@cubejs-client/react';
+import ChartRenderer from '../ChartRenderer';
+import MemberGroup from './MemberGroup';
+import FilterGroup from './FilterGroup';
+import TimeGroup from './TimeGroup';
+import SelectChartType from './SelectChartType';
+import OrderGroup from './Order/OrderGroup';
+import Pivot from './Pivot/Pivot';
 export default function ExploreQueryBuilder({
   vizState,
   cubejsApi,
   setVizState,
-  chartExtra
+  chartExtra,
 }) {
   return (
     <QueryBuilder
@@ -44,7 +44,7 @@ export default function ExploreQueryBuilder({
         orderMembers,
         updateOrder,
         pivotConfig,
-        updatePivotConfig
+        updatePivotConfig,
       }) => {
         return (
           <Fragment>
@@ -54,7 +54,7 @@ export default function ExploreQueryBuilder({
               align="top"
               gutter={24}
               style={{
-                marginBottom: 12
+                marginBottom: 12,
               }}
             >
               <Col span={24}>
@@ -65,7 +65,7 @@ export default function ExploreQueryBuilder({
                     align="top"
                     gutter={24}
                     style={{
-                      marginBottom: 12
+                      marginBottom: 12,
                     }}
                   >
                     <Col span={24}>
@@ -105,7 +105,7 @@ export default function ExploreQueryBuilder({
                     align="top"
                     gutter={24}
                     style={{
-                      marginBottom: 12
+                      marginBottom: 12,
                     }}
                   >
                     <Col span={24}>
@@ -184,7 +184,7 @@ export default function ExploreQueryBuilder({
                 {isQueryPresent ? (
                   <Card
                     style={{
-                      minHeight: 420
+                      minHeight: 420,
                     }}
                     extra={chartExtra}
                   >
@@ -192,7 +192,7 @@ export default function ExploreQueryBuilder({
                       vizState={{
                         query: validatedQuery,
                         chartType,
-                        pivotConfig
+                        pivotConfig,
                       }}
                       cubejsApi={cubejsApi}
                     />
@@ -200,7 +200,7 @@ export default function ExploreQueryBuilder({
                 ) : (
                   <h2
                     style={{
-                      textAlign: "center"
+                      textAlign: 'center',
                     }}
                   >
                     Choose a measure or dimension to get started
@@ -218,11 +218,11 @@ ExploreQueryBuilder.propTypes = {
   vizState: PropTypes.object,
   setVizState: PropTypes.func,
   cubejsApi: PropTypes.object,
-  chartExtra: PropTypes.array
+  chartExtra: PropTypes.array,
 };
 ExploreQueryBuilder.defaultProps = {
   vizState: {},
   setVizState: null,
   cubejsApi: null,
-  chartExtra: null
+  chartExtra: null,
 };

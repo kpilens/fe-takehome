@@ -1,19 +1,19 @@
-import React, { useState } from "react";
-import { Alert, Button, Spin } from "antd";
-import { useQuery } from "@apollo/react-hooks";
-import { withRouter } from "react-router-dom";
-import ExploreQueryBuilder from "../components/QueryBuilder/ExploreQueryBuilder";
-import { GET_DASHBOARD_ITEM } from "../graphql/queries";
-import TitleModal from "../components/TitleModal.js";
+import React, { useState } from 'react';
+import { Alert, Button, Spin } from 'antd';
+import { useQuery } from '@apollo/react-hooks';
+import { withRouter } from 'react-router-dom';
+import ExploreQueryBuilder from '../components/QueryBuilder/ExploreQueryBuilder';
+import { GET_DASHBOARD_ITEM } from '../graphql/queries';
+import TitleModal from '../components/TitleModal.js';
 const ExplorePage = withRouter(({ history, location }) => {
   const [addingToDashboard, setAddingToDashboard] = useState(false);
   const params = new URLSearchParams(location.search);
-  const itemId = params.get("itemId");
+  const itemId = params.get('itemId');
   const { loading, error, data } = useQuery(GET_DASHBOARD_ITEM, {
     variables: {
-      id: itemId
+      id: itemId,
     },
-    skip: !itemId
+    skip: !itemId,
   });
   const [vizState, setVizState] = useState(null);
   const finalVizState =
@@ -25,7 +25,7 @@ const ExplorePage = withRouter(({ history, location }) => {
   const finalTitle =
     title != null
       ? title
-      : (itemId && !loading && data && data.dashboardItem.name) || "New Chart";
+      : (itemId && !loading && data && data.dashboardItem.name) || 'New Chart';
 
   if (loading) {
     return <Spin />;
@@ -57,8 +57,8 @@ const ExplorePage = withRouter(({ history, location }) => {
             loading={addingToDashboard}
             onClick={() => setTitleModalVisible(true)}
           >
-            {itemId ? "Update" : "Add to Dashboard"}
-          </Button>
+            {itemId ? 'Update' : 'Add to Dashboard'}
+          </Button>,
         ]}
       />
     </div>

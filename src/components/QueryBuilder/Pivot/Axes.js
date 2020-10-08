@@ -1,11 +1,15 @@
-import React from "react";
-import { DragDropContext } from "react-beautiful-dnd";
-import { Row, Col, Divider } from "antd";
-import DroppableArea from "./DroppableArea";
+import React, { useEffect, useState } from 'react';
+import { DragDropContext } from 'react-beautiful-dnd';
+import { Row, Col, Divider } from 'antd';
+import DroppableArea from './DroppableArea';
 export default function Axes({ pivotConfig, onMove }) {
+  const [uiPivotConfig, setUIPivotConfig] = useState(pivotConfig);
+  useEffect(() => {
+    setUIPivotConfig(pivotConfig);
+  }, [pivotConfig]);
   return (
     <DragDropContext
-      onDragEnd={({ source, destination }) => {
+      onDragEnd={({ source, destination, ...props }) => {
         if (!destination) {
           return;
         }
@@ -14,26 +18,30 @@ export default function Axes({ pivotConfig, onMove }) {
           sourceIndex: source.index,
           destinationIndex: destination.index,
           sourceAxis: source.droppableId,
-          destinationAxis: destination.droppableId
+          destinationAxis: destination.droppableId,
+
+          callback(updatedPivotConfig) {
+            setUIPivotConfig(updatedPivotConfig);
+          },
         });
       }}
     >
       <Row>
         <Col span={11}>
-          <DroppableArea pivotConfig={pivotConfig} axis="x" />
+          <DroppableArea pivotConfig={uiPivotConfig} axis="x" />
         </Col>
 
         <Col span={2}>
           <Divider
             style={{
-              height: "100%"
+              height: '100%',
             }}
             type="vertical"
           />
         </Col>
 
         <Col span={11}>
-          <DroppableArea pivotConfig={pivotConfig} axis="y" />
+          <DroppableArea pivotConfig={uiPivotConfig} axis="y" />
         </Col>
       </Row>
     </DragDropContext>

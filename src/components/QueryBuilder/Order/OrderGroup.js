@@ -1,6 +1,6 @@
-import React from "react";
-import { DragDropContext, Droppable } from "react-beautiful-dnd";
-import DraggableItem from "./DraggableItem";
+import React from 'react';
+import { DragDropContext, Droppable } from 'react-beautiful-dnd';
+import DraggableItem from './DraggableItem';
 export default function OrderGroup({ orderMembers, onOrderChange, onReorder }) {
   return (
     <DragDropContext
@@ -9,13 +9,13 @@ export default function OrderGroup({ orderMembers, onOrderChange, onReorder }) {
       }}
     >
       <Droppable droppableId="droppable">
-        {provided => (
+        {(provided) => (
           <div
             ref={provided.innerRef}
             {...provided.droppableProps}
             style={{
               paddingTop: 8,
-              width: 260
+              width: 260,
             }}
           >
             {orderMembers.map(({ id, title, order }, index) => (

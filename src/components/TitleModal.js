@@ -1,11 +1,11 @@
-import React from "react";
-import { Modal, Input } from "antd";
-import { useMutation } from "@apollo/react-hooks";
-import { GET_DASHBOARD_ITEMS } from "../graphql/queries";
+import React from 'react';
+import { Modal, Input } from 'antd';
+import { useMutation } from '@apollo/react-hooks';
+import { GET_DASHBOARD_ITEMS } from '../graphql/queries';
 import {
   CREATE_DASHBOARD_ITEM,
-  UPDATE_DASHBOARD_ITEM
-} from "../graphql/mutations";
+  UPDATE_DASHBOARD_ITEM,
+} from '../graphql/mutations';
 
 const TitleModal = ({
   history,
@@ -15,21 +15,21 @@ const TitleModal = ({
   setAddingToDashboard,
   finalVizState,
   setTitle,
-  finalTitle
+  finalTitle,
 }) => {
   const [addDashboardItem] = useMutation(CREATE_DASHBOARD_ITEM, {
     refetchQueries: [
       {
-        query: GET_DASHBOARD_ITEMS
-      }
-    ]
+        query: GET_DASHBOARD_ITEMS,
+      },
+    ],
   });
   const [updateDashboardItem] = useMutation(UPDATE_DASHBOARD_ITEM, {
     refetchQueries: [
       {
-        query: GET_DASHBOARD_ITEMS
-      }
-    ]
+        query: GET_DASHBOARD_ITEMS,
+      },
+    ],
   });
   return (
     <Modal
@@ -46,11 +46,11 @@ const TitleModal = ({
               id: itemId,
               input: {
                 vizState: JSON.stringify(finalVizState),
-                name: finalTitle
-              }
-            }
+                name: finalTitle,
+              },
+            },
           });
-          history.push("/");
+          history.push('/');
         } finally {
           setAddingToDashboard(false);
         }
@@ -60,7 +60,7 @@ const TitleModal = ({
       <Input
         placeholder="Dashboard Item Name"
         value={finalTitle}
-        onChange={e => setTitle(e.target.value)}
+        onChange={(e) => setTitle(e.target.value)}
       />
     </Modal>
   );

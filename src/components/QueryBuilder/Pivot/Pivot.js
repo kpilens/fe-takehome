@@ -1,12 +1,12 @@
-import React from "react";
-import { Tabs } from "antd";
-import Axes from "./Axes";
-import Options from "./Options";
+import React from 'react';
+import { Tabs } from 'antd';
+import Axes from './Axes';
+import Options from './Options';
 export default function Pivot({ pivotConfig, onMove, onUpdate }) {
   return (
     <Tabs
       style={{
-        width: 340
+        width: 340,
       }}
     >
       <Tabs.TabPane tab="Pivot" key="1">

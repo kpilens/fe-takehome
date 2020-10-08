@@ -1,4 +1,4 @@
-import gql from "graphql-tag";
+import gql from 'graphql-tag';
 export const CREATE_DASHBOARD_ITEM = gql`
   mutation CreateDashboardItem($input: DashboardItemInput) {
     createDashboardItem(input: $input) {

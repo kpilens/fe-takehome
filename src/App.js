@@ -1,30 +1,28 @@
-import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
-import "./body.css";
-import "antd/dist/antd.css";
-import { ApolloProvider } from "@apollo/react-hooks";
-import { Layout } from "antd";
-import cubejs from "@cubejs-client/core";
-import { CubeProvider } from "@cubejs-client/react";
-import client from "./graphql/client";
-import Header from "./components/Header";
-import WebSocketTransport from "@cubejs-client/ws-transport";
-// const API_URL = "http://localhost:4000";
-const API_URL = "https://temp-takehome-api.staging.kpilens.com";
+import './body.css';
+import 'antd/dist/antd.css';
+import React from 'react';
+import '@ant-design/compatible';
+import { ApolloProvider } from '@apollo/react-hooks';
+import { Layout } from 'antd';
+import cubejs from '@cubejs-client/core';
+import { CubeProvider } from '@cubejs-client/react';
+import client from './graphql/client';
+import Header from './components/Header';
+const API_URL = 'http://localhost:4000';
+// const API_URL = 'https://cors-anywhere.herokuapp.com/https://takehome-api.staging.kpilens.com/';
 const CUBEJS_TOKEN =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1OTUyOTU3NTksImV4cCI6MTU5NTM4MjE1OX0.mXZSbfVGQuYdmWe3HxUB1klbn9Ikljdx1mG8obx7GiU";
-const cubejsApi = cubejs({
-  transport: new WebSocketTransport({
-    authorization: CUBEJS_TOKEN,
-    apiUrl: API_URL.replace("https", "ws")
-  })
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MDIxNTA3MzIsImV4cCI6MTYwMjIzNzEzMn0.An5yvud4Hcesnl_tzqYPT5HPtRpud6xwyGhIKnL0AdU';
+const cubejsApi = cubejs(CUBEJS_TOKEN, {
+  apiUrl: `${API_URL}/cubejs-api/v1`,
+  headers: {
+    credentials: "include"
+  }
 });
 
 const AppLayout = ({ children }) => (
   <Layout
     style={{
-      height: "100%"
+      height: '100%',
     }}
   >
     <Header />

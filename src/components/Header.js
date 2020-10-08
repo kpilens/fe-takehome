@@ -1,46 +1,45 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { withRouter } from "react-router";
-import { Layout, Menu } from "antd";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router';
+import { Layout, Menu } from 'antd';
 
 const Header = ({ location }) => (
   <Layout.Header
     style={{
-      padding: "0 24px",
-      background: 'white'
+      padding: '0 32px',
     }}
   >
     <div
       style={{
-        float: "left"
+        float: 'left',
       }}
     >
       <h2
         style={{
-          color: "#fff",
+          color: '#fff',
           margin: 0,
-          marginRight: "1em",
-          display: "inline",
+          marginRight: '1em',
+          display: 'inline',
           width: 100,
-          lineHeight: "30px"
+          lineHeight: '54px',
         }}
       >
-        Indicators
+        My Dashboard
       </h2>
     </div>
     <Menu
-      theme="light"
+      theme="dark"
       mode="horizontal"
       selectedKeys={[location.pathname]}
       style={{
-        lineHeight: "64px"
+        lineHeight: '64px',
       }}
     >
       <Menu.Item key="/explore">
-        <Link to="/explore">Generate</Link>
+        <Link to="/explore">Explore</Link>
       </Menu.Item>
       <Menu.Item key="/">
-        <Link to="/">Saved Visualizations</Link>
+        <Link to="/">Dashboard</Link>
       </Menu.Item>
     </Menu>
   </Layout.Header>

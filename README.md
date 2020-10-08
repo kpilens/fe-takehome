@@ -1,25 +1,26 @@
 # The Frontend Takehome
 
-Please refer to https://www.notion.so/kpilens/Front-end-Take-Home-074ac26c99bc4d5b9fe9f63abbe033a2 for instructions
+Please refer to <https://www.notion.so/kpilens/Front-end-Take-Home-074ac26c99bc4d5b9fe9f63abbe033a2> for instructions
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Running the Project
+
+> The project consists of a client and an API in `/api` directory
 
 In the project directory, you can run:
 
 ### `yarn start`
 
-Runs the app in the development mode.<br />
+Runs the client app in the development mode.
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br />
+The page will reload if you make edits.
 You will also see any lint errors in the console.
 
-### `yarn test`
+### `cd /api && yarn dev`
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Launches the API in query mode to retrieve responses from the client app
 
 ### `yarn build`
 
